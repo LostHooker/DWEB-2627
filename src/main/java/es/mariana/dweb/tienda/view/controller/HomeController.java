@@ -23,13 +23,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 @Controller
 public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-
-
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+        Calendar cal = Calendar.getInstance();
+        model.addAttribute("today", dateFormat.format(cal.getTime()));
         return "home";
     }
 
