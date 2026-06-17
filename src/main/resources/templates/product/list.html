@@ -27,38 +27,23 @@
   </header>
 
     <main class="page">
-      <section class="hero">
-        <div class="page-header">
-          <p class="eyebrow">Panel principal</p>
-          <h1 th:text="'Bienvenido a Happy Pack '+ ${name}">Bienvenido a Happy Pack</h1>
-          <p class="lead">Gestiona productos, pedidos y clientes desde una experiencia rápida, clara y preparada para el día a día.</p>
+      <div class="page-header">
+        <p class="eyebrow">Catálogo</p>
+        <h1>Productos</h1>
+        <p class="lead">Listado de artículos promocionales con precio, disponibilidad y comentarios de clientes.</p>
+      </div>
+
+      <section class="data-grid" aria-label="Lista de productos">
+        <div class="grid-row grid-row--head product-grid">
+            <span>Nombre</span>
+          <span class="number">Precio</span>
         </div>
 
-
-        <aside class="hero__panel">
-          <p class="eyebrow">Hoy</p>
-          <h2 th:text="${today}">13 febrero 2011</h2>
-          <p class="muted">Catálogo promocional con stock, pedidos y comentarios conectados a SQLite.</p>
-        </aside>
+        <article class="grid-row product-grid" th:each="prod : ${prods}">
+          <strong th:text="${prod.name}">Bolsa de tela reutilizable</strong>
+          <span class="number" th:text="${prod.price + ' €'}">2.50 €</span>
+        </article>
       </section>
-        <section class="quick-links" aria-label="Accesos principales">
-            <article class="quick-link">
-                <h3>Oferta del día</h3>
-                <p>Producto</p>
-                <p>Categoría</p>
-                <p>Precio</p>
-            </article>
-            <article class="quick-link">
-                <h3>Pedido</h3>
-                <p>Pedido</p>
-                <p>Fecha estimada de entrega</p>
-            </article>
-            <article class="quick-link">
-                <h3>Contacto</h3>
-                <p>Empresa</p>
-                <p>Email</p>
-            </article>
-        </section>
     </main>
 
   <footer class="site-footer">
