@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Happy Pack</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/gtvg.css" th:href="@{/css/gtvg.css}" />
+    <link rel="icon" type="image/x-icon" href="/images/happyPackLogo.ico"/>
+</head>
+
+  <body>
+
+  <header class="site-header">
+      <div class="site-header__inner">
+          <a class="brand" href="home.html" th:href="@{/}">
+              <img src="../static/images/happyPackLogo.png" alt="Happy Pack" th:src="@{/images/happyPackLogo.png}" />
+              <span class="brand__text">
+            <span class="brand__name">Happy Pack</span>
+            <span class="brand__tagline">Regalos útiles para cada ocasión</span>
+          </span>
+          </a>
+      </div>
+  </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="page-header">
+          <p class="eyebrow">Panel principal</p>
+          <h1 th:text="'Bienvenido a Happy Pack'">Bienvenido a Happy Pack</h1>
+          <p class="lead">Gestiona productos, pedidos y clientes desde una experiencia rápida, clara y preparada para el día a día.</p>
+        </div>
+
+
+        <aside class="hero__panel">
+          <p class="eyebrow">Hoy</p>
+          <h2 >13 febrero 2011</h2>
+          <p class="muted">Catálogo promocional con stock, pedidos y comentarios conectados a SQLite.</p>
+        </aside>
+      </section>
+
+    </main>
+
+  <footer class="site-footer">
+      <div class="site-footer__inner">
+          <span>&copy; 2026 Happy Pack</span>
+      </div>
+  </footer>
+
+  </body>
+
+</html>
