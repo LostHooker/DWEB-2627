@@ -265,7 +265,7 @@ h2 {
 }
 
 .product-grid {
-  grid-template-columns: 40% 10% 10% 20% 20%;
+  grid-template-columns: 10% 40% 10% 20% 20%;
 }
 
 .order-grid {

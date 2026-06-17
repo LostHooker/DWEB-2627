@@ -35,11 +35,13 @@
 
       <section class="data-grid" aria-label="Lista de productos">
         <div class="grid-row grid-row--head product-grid">
+            <span>Nº</span>
             <span>Nombre</span>
           <span class="number">Precio</span>
         </div>
 
-        <article class="grid-row product-grid" th:each="prod : ${prods}">
+        <article class="grid-row product-grid" th:each="prod, iterStat : ${prods}">
+            <span th:text="${iterStat.count}">1</span>
           <strong th:text="${prod.name}">Bolsa de tela reutilizable</strong>
           <span class="number" th:text="${prod.price + ' €'}">2.50 €</span>
         </article>
