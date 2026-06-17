@@ -19,12 +19,14 @@
  */
 package es.mariana.dweb.tienda.view.controller;
 
+import com.github.javafaker.Faker;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 @Controller
 public class HomeController {
@@ -34,6 +36,9 @@ public class HomeController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         Calendar cal = Calendar.getInstance();
         model.addAttribute("today", dateFormat.format(cal.getTime()));
+
+        Faker faker = new Faker(new Locale("es"));
+        model.addAttribute("name", faker.name().firstName());
         return "home";
     }
 
