@@ -33,12 +33,18 @@
             <span>Nº</span>
             <span>Nombre</span>
           <span class="number">Precio</span>
+            <span>Stock</span>
+            <span>Descuento</span>
+            <span>Precio final</span>
         </div>
 
         <article class="grid-row product-grid" th:each="prod, iterStat : ${prods}">
             <span th:text="${iterStat.count}">1</span>
           <strong th:text="${prod.name}">Bolsa de tela reutilizable</strong>
-          <span class="number" th:text="${prod.price + ' €'}">2.50 €</span>
+          <span class="number" th:text="${prod.price} + ' €'">2.50 €</span>
+            <span class="badge" th:class="${prod.inStock} ? 'badge' : ' badge--danger'" th:text="${prod.inStock} ? 'SI' : 'NO'">SI</span>
+            <span th:text="${prod.price gt 3} ? '10%' : '-'">10%</span>
+            <span th:text="${prod.price gt 3} ? ${#numbers.formatDecimal(prod.price*0.9, 1, 2)} + ' €' : '-'">2,5€</span>
         </article>
       </section>
     </main>
