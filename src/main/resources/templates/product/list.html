@@ -60,6 +60,7 @@
                 </span>
             </div>
             <div>
+            <a class="button button--secondary" href="edit.html" th:href="@{/product/edit(prodId=${prod.id})}">Editar</a>
             <form th:action="@{/product/delete}" method="post" style="display: inline;">
               <input type="hidden" name="prodId" th:value="${prod.id}" />
               <button type="submit" class="button button--secondary" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</button>

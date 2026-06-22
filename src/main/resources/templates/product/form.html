@@ -24,25 +24,26 @@
     <main class="page">
       <div class="page-header">
         <p class="eyebrow">Catálogo</p>
-        <h1>Nuevo Producto</h1>
-        <p class="lead">Añade un nuevo producto al catálogo.</p>
+        <h1 th:text="${product == null ? 'Nuevo producto' : 'Editar producto'}">Nuevo Producto</h1>
+        <p class="lead" th:text="${product == null ? 'Añade un nuevo producto al catálogo.' : 'Modifica los datos del producto.'}">Añade un nuevo producto al catálogo.</p>
       </div>
 
       <form class="form-panel" th:action="@{/product/save}" method="post">
         <fieldset>
+            <input type="hidden" name="id" th:if="${product}" th:value="${product.id}" />
 
           <label for="name">Nombre</label>
-          <input id="name" type="text" name="name"  required />
+          <input id="name" type="text" name="name" th:value="${product == null ? '' : product.name}" required />
 
           <label for="price">Precio (€)</label>
-          <input id="price" type="number" name="price" step="0.01" min="0"  required />
+          <input id="price" type="number" name="price" step="0.01" min="0" th:value="${product == null ? '' : product.price}" required />
 
           <label for="inStock">
-            <input type="checkbox" id="inStock" name="inStock" />
+            <input type="checkbox" id="inStock" name="inStock" th:checked="${product == null ? '' : product.inStock}" />
             En stock
           </label>
 
-          <input type="submit" value="Crear producto" />
+          <input type="submit" value="Crear producto" th:value="${product == null ? 'Crear producto' : 'Guardar cambios'}" />
         </fieldset>
       </form>
 

@@ -58,15 +58,23 @@ public class ProductController {
         return "product/form";
     }
 
+    @GetMapping("product/edit")
+    public String editProduct(@RequestParam("prodId") final Integer productId, final Model model) {
+        model.addAttribute("product", this.productService.findById(productId));
+        return "product/form";
+    }
+
     @PostMapping("product/save")
-    public String createProduct(
+    public String saveProduct(
+            @RequestParam(value = "id", required = false) final Integer id,
             @RequestParam("name") final String name,
             @RequestParam(value = "inStock", required = false) final String inStock,
             @RequestParam("price") final BigDecimal price) {
-        this.productService.create(name, inStock != null, price);
+
+        if (id == null) this.productService.create(name, inStock != null, price);
+        else this.productService.update(id, name, inStock != null, price);
         return "redirect:/product/list";
     }
-
 
     @PostMapping("product/delete")
     public String deleteProduct(@RequestParam("prodId") final Integer productId) {
