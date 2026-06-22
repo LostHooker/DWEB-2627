@@ -36,6 +36,7 @@
             <span>Stock</span>
             <span>Descuento</span>
             <span>Precio final</span>
+            <span>Comentarios</span>
         </div>
 
         <article class="grid-row product-grid" th:each="prod, iterStat : ${prods}">
@@ -45,6 +46,14 @@
             <span class="badge" th:class="${prod.inStock} ? 'badge' : ' badge--danger'" th:text="${prod.inStock} ? 'SI' : 'NO'">SI</span>
             <span th:text="${prod.price gt 3} ? '10%' : '-'">10%</span>
             <span th:text="${prod.price gt 3} ? ${#numbers.formatDecimal(prod.price*0.9, 1, 2)} + ' €' : '-'">2,5€</span>
+            <div>
+                <span th:text="${#lists.size(prod.comments)}">2</span> comentario/s
+                <a class="button button--secondary"
+                   href="comments.html"
+                   th:href="@{/product/comments(prodId=${prod.id})}"
+                   th:if="${!#lists.isEmpty(prod.comments)}">Ver</a>
+                </span>
+            </div>
         </article>
       </section>
     </main>
