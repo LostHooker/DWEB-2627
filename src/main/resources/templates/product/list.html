@@ -28,6 +28,10 @@
         <p class="lead">Listado de artículos promocionales con precio, disponibilidad y comentarios de clientes.</p>
       </div>
 
+        <nav class="actions">
+            <a class="button" href="/product/new">Nuevo producto</a>
+        </nav>
+
       <section class="data-grid" aria-label="Lista de productos">
         <div class="grid-row grid-row--head product-grid">
             <span>Nº</span>
@@ -37,6 +41,7 @@
             <span>Descuento</span>
             <span>Precio final</span>
             <span>Comentarios</span>
+            <span>Acciones</span>
         </div>
 
         <article class="grid-row product-grid" th:each="prod, iterStat : ${prods}">
@@ -54,6 +59,12 @@
                    th:if="${!#lists.isEmpty(prod.comments)}">Ver</a>
                 </span>
             </div>
+            <div>
+            <form th:action="@{/product/delete}" method="post" style="display: inline;">
+              <input type="hidden" name="prodId" th:value="${prod.id}" />
+              <button type="submit" class="button button--secondary" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</button>
+            </form>
+          </div>
         </article>
       </section>
     </main>

@@ -25,8 +25,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -49,6 +51,27 @@ public class ProductController {
         final Product product = productService.findById(prodId);
         model.addAttribute("prod", product);
         return "product/comments";
+    }
+
+    @GetMapping("product/new")
+    public String newProduct(final Model model) {
+        return "product/form";
+    }
+
+    @PostMapping("product/save")
+    public String createProduct(
+            @RequestParam("name") final String name,
+            @RequestParam(value = "inStock", required = false) final String inStock,
+            @RequestParam("price") final BigDecimal price) {
+        this.productService.create(name, inStock != null, price);
+        return "redirect:/product/list";
+    }
+
+
+    @PostMapping("product/delete")
+    public String deleteProduct(@RequestParam("prodId") final Integer productId) {
+        this.productService.deleteById(productId);
+        return "redirect:/product/list";
     }
 
 
