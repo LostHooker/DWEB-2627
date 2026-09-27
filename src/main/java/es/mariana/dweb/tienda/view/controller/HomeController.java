@@ -41,5 +41,9 @@ public class HomeController {
         model.addAttribute("name", faker.name().firstName());
         return "home";
     }
+    @GetMapping("/home1")
+    public String home1() {
+        return "home1";
+    }
 
 }

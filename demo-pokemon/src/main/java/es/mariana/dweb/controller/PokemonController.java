@@ -22,5 +22,15 @@ public class PokemonController {
 
         return "home";
     }
+    @GetMapping("/informacion")
+    public String informacion(Model model) {
+        Pokemon pokemon = pokemonService.findRandom();
+
+        model.addAttribute("pokemon", pokemon);
+        model.addAttribute("titulo", "Información de la Pokédex");
+        model.addAttribute("presentacion", "Conoce los datos principales de uno de los Pokémon disponibles en nuestra Pokédex.");
+        model.addAttribute("fechaHora", java.time.LocalDateTime.now());
+        return "informacion";
+    }
 
 }
