@@ -9,12 +9,9 @@
   </style>
 </head>
 <body>
+<nav th:replace="~{fragments :: menu}"></nav>
 <main class="page">
   <header class="topbar">
-    <nav class="nav">
-		<a th:href="@{/}">Inicio</a>
-		<a th:href="@{/pokemon/galeria}">Galería</a>
-	</nav>
     <span class="updated" th:text="${'Actualizado el ' + #temporals.format(fechaHora, 'dd/MM/yyyy') + ' a las ' + #temporals.format(fechaHora, 'HH:mm')}">Actualizado el 22/09/2026 a las 12:00</span>
   </header>
   <section class="hero">
@@ -44,6 +41,7 @@
     </table>
   </section>
 </main>
+<footer th:replace="~{fragments :: footer}"></footer>
 
 
 </body></html>
