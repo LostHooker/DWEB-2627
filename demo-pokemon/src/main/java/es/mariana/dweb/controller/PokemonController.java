@@ -48,5 +48,12 @@ public class PokemonController {
         model.addAttribute("titulo", "Galería Pokémon");
         return "galeria-pokemon";
     }
-
+    @GetMapping("/pokemon/batalla")
+    public String batalla(Model model){
+        Pokemon pokemon1 = pokemonService.findRandom();
+        Pokemon pokemon2 = pokemonService.findRandom();
+        model.addAttribute("pokemon1",pokemon1);
+        model.addAttribute("pokemon2",pokemon2);
+        return "batalla-pokemon";
+    }
 }
