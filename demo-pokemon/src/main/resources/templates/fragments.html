@@ -68,6 +68,49 @@
 
 </nav>
 
+<div th:fragment="formulario-busqueda">
+    <form th:action="${esTabla} ? @{/pokemon/tabla} : @{/pokemon/galeria}" method="get">
+        <label>Tipo: </label>
+        <select name="tipo" id="tipo">
+            <option value="">Aleatorio</option>
+            <option th:each="t : ${tipos}"
+                    th:value="${t.name}"
+                    th:text="${t.name}"
+                    th:selected="${t.name == tipoSeleccionado}">
+            </option>
+        </select>
+
+        <label>Nombre:
+            <input type="text" name="nombre" th:value="${nombre}">
+        </label>
+        <label>Altura Mínima:
+            <input type="number" step="0.1" name="alturaMin" th:value="${alturaMin}">
+        </label>
+        <label>Peso Máximo:
+            <input type="number" step="0.1" name="pesoMax" th:value="${pesoMax}">
+        </label>
+        <label>Ordenar:
+            <select name="orden">
+                <option value="">Sin ordenar</option>
+                <option value="nombre" th:selected="${orden == 'nombre'}">Nombre</option>
+                <option value="altura" th:selected="${orden == 'altura'}">Altura</option>
+                <option value="peso" th:selected="${orden == 'peso'}">Peso</option>
+            </select>
+        </label>
+        <label>Sentido:
+            <select name="sentido">
+                <option value="asc" th:selected="${sentido == 'asc'}">Ascendente</option>
+                <option value="desc" th:selected="${sentido == 'desc'}">Descendente</option>
+            </select>
+        </label>
+
+        <button type="submit">Filtrar</button>
+        <a th:href="${esTabla} ? @{/pokemon/tabla} : @{/pokemon/galeria}">Limpiar filtros</a>
+    </form>
+
+
+</div>
+
 
 <!-- =========================================================
      PIE DE PÁGINA
